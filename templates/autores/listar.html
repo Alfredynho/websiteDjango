@@ -1,16 +1,52 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Listar Autores</title>
+	{% block title %}Listar Autores{% endblock title %}
 </head>
 
 <body>
-	<h1 align="center"> LISTA AUTORES </h1>
-	<a href="{% url 'autores:crear_autor'%}">Crear autor</a>
-	{% for autor in autores %}
-		<h2>{{ autor.nombre }} {{ autor.apellido }} {{ autor.pais }}</h2> <a href="{% url 'autores:eliminar_autor' autor.id %}">Eliminar </a> <a href="{% url 'autores:editar_autor' autor.id %}">Modificar</a>
-	{% endfor %}
-	
+
+  {% block content %}
+
+<div class="alert alert-success">
+  <center><strong>Biblioteca</strong> Lista de Autores.</center>
+</div>
+
+<div class="container">
+<img align="right" src="{% static 'image/djangopony.png'%}" class="img-rounded" width="180" height="120"> 
+  <h2>Workshop Django "Corre como el viento"</h2>
+  <a href="{% url 'autores:crear_autor'%}" class="btn btn-success">Crear Autor</a>
+  <table class="table table-hover table-bordered"><br><br>
+    <thead>
+      <tr>
+        <th>Nro</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Pais</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for autor in autores %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ autor.nombre }}</td>
+        <td>{{ autor.apellido }}</td>
+        <td>{{ autor.pais | upper }}</td>
+        <td align="center">
+          <a href="{% url 'autores:editar_autor' autor.id %}" class="btn btn-warning">Modificar</a>
+          <a href="{% url  'autores:eliminar_autor' autor.id %}" class="btn btn-danger">Eliminar</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
 </body>
+{% endblock content %}
 </html>

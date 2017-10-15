@@ -2,11 +2,18 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Base</title>
+	<title>{% block title %} {% endblock title %}</title>
 </head>
-<body>
-{% block content %}
 
-{% endblock content %}
-</body>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+
+	<body>
+	{% block content %}
+
+	{% endblock content %}
+	</body>
+
+    <!-- Bootstrap -->
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
 </html>

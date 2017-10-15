@@ -1,14 +1,25 @@
+{% extends 'base.html'%}
+{% load i18n static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	{% block title %}Eliminar Autor {% endblock title %}
+
 </head>
 <body>
+{% block content %}
+<div class="alert alert-success">
+  <center><strong>Biblioteca</strong> Crear Autor.</center>
+</div>
+<img align="right" src="{% static 'image/djangopony.png'%}" class="img-rounded" width="180" height="120"> 
+<center>
 <form action="" method="post">{% csrf_token %}
     <p>Desea Eliminar "{{ object }}"?</p>
-    <input type="submit" value="Confirm" />
+    <input type="submit" class="btn btn-danger" value="Confirm" />
 </form>
-
+</center>
 </body>
+{% endblock content %}
 </html>

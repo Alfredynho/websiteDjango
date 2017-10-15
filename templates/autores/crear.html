@@ -1,17 +1,26 @@
 {% extends 'base.html'%}
+{% load i18n static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Crear</title>
+	{% block title %}Crear Autor {% endblock title %}
 </head>
 <body>
 {% block content %}	
+<div class="alert alert-success">
+  <center><strong>Biblioteca</strong> Crear Autor.</center>
+</div>
+<img align="right" src="{% static 'image/djangopony.png'%}" class="img-rounded" width="180" height="120"> 
+  <center>
+  <h2>Workshop Django "Corre como el viento"</h2>
 	<form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Submit" />
-{% endblock content %}
-</form>
+    <input type="submit" class="btn btn-success" value="Crear" />
+	</form>
+  </center>
 </body>
+{% endblock content %}
 </html>
